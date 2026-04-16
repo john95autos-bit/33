@@ -1,0 +1,61 @@
+/* Trail SVG */
+.plane-trail-svg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 49;
+}
+
+/* Plane wrapper */
+.plane-fly {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 50;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* Pulse ring behind plane */
+.plane-glow-ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 70px; height: 70px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 180, 216, 0.35);
+  animation: ringPulse 2s ease-in-out infinite;
+}
+
+@keyframes ringPulse {
+  0%   { transform: translate(-50%, -50%) scale(0.7); opacity: 0.7; }
+  100% { transform: translate(-50%, -50%) scale(1.6); opacity: 0; }
+}
+
+/* Exhaust trail dots */
+.plane-exhaust {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 5px;
+  padding-right: 4px;
+}
+
+.plane-exhaust span {
+  display: block;
+  border-radius: 50%;
+  background: var(--bright);
+  animation: exhaustFade 1s ease-in-out infinite;
+}
+
+.plane-exhaust span:nth-child(1) { width: 5px; height: 5px; animation-delay: 0s;    opacity: 0.8; }
+.plane-exhaust span:nth-child(2) { width: 4px; height: 4px; animation-delay: 0.15s; opacity: 0.5; }
+.plane-exhaust span:nth-child(3) { width: 3px; height: 3px; animation-delay: 0.3s;  opacity: 0.3; }
+
+@keyframes exhaustFade {
+  0%, 100% { transform: scale(1);   opacity: inherit; }
+  50%       { transform: scale(0.6); opacity: 0.1; }
+}

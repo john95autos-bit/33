@@ -1,0 +1,110 @@
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 6vw;
+  transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
+}
+
+.navbar.scrolled {
+  background: rgba(3, 4, 94, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  padding: 14px 6vw;
+  border-bottom: 1px solid rgba(144, 224, 239, 0.1);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  color: var(--white);
+  transition: opacity 0.3s;
+}
+.nav-logo:hover { opacity: 0.85; }
+
+.logo-icon {
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, var(--bright), var(--light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.logo-text strong { color: var(--bright); }
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 36px;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--lightest);
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 2px;
+  background: var(--bright);
+  border-radius: 2px;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover { color: var(--bright); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta { font-size: 0.85rem; padding: 10px 24px; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px; height: 2px;
+  background: var(--light);
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.hamburger span.open:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger span.open:nth-child(2) { opacity: 0; }
+.hamburger span.open:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-cta { display: none; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 70px; left: 0; right: 0;
+    flex-direction: column;
+    background: rgba(3, 4, 94, 0.97);
+    backdrop-filter: blur(20px);
+    padding: 30px 6vw;
+    gap: 24px;
+    border-bottom: 1px solid var(--glass-b);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 1.1rem; }
+}

@@ -1,0 +1,213 @@
+/* ── Section wrapper ── */
+.flight-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ── Atmospheric sky ── */
+.flight-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #020917  0%,
+    #031E58 15%,
+    #044488 38%,
+    #0069A8 62%,
+    #0096C7 82%,
+    #00BAD6 100%
+  );
+}
+
+/* ── Three.js canvas ── */
+.flight-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+/* ── Content panels (shared) ── */
+.fp {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* TOP — hero text */
+.fp-top {
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: var(--white);
+}
+
+.fp-top .fp-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 14px;
+}
+
+.fp-top h2 {
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.35);
+  margin-bottom: 12px;
+}
+
+.fp-top h2 span {
+  background: linear-gradient(135deg, var(--bright), var(--light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.fp-top p {
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--lightest);
+  opacity: 0.7;
+}
+
+/* RIGHT panel */
+.fp-right {
+  right: 5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(320px, 40vw);
+  padding: 28px 26px;
+}
+
+/* LEFT panel */
+.fp-left {
+  left: 5vw;
+  top: 50%;
+  transform: translateY(-50%);
+  width: min(320px, 40vw);
+  padding: 28px 26px;
+}
+
+/* BOTTOM panel */
+.fp-bottom {
+  bottom: 14%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: var(--white);
+}
+
+/* Panel inner content */
+.fp-icon { font-size: 2.2rem; display: block; margin-bottom: 14px; }
+
+.fp-right h3,
+.fp-left h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.fp-right p,
+.fp-left p {
+  font-size: 0.82rem;
+  color: var(--light);
+  margin-bottom: 18px;
+}
+
+.fp-right ul,
+.fp-left ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.fp-right li,
+.fp-left li {
+  font-size: 0.83rem;
+  color: var(--lightest);
+  font-weight: 500;
+}
+
+/* Bottom destinations */
+.fp-sub {
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 18px;
+}
+
+.fp-flags {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  justify-content: center;
+}
+
+.fp-country {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.fp-country span { font-size: 2.4rem; }
+.fp-country strong { font-size: 1.1rem; font-weight: 800; color: var(--white); }
+.fp-country small { font-size: 0.72rem; color: var(--light); text-align: center; max-width: 140px; }
+
+.fp-divider {
+  font-size: 1.8rem;
+  color: var(--bright);
+  font-weight: 300;
+}
+
+/* ── Scroll hint ── */
+.flight-hint {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.flight-hint span {
+  font-size: 0.62rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(202, 240, 248, 0.55);
+}
+
+.scroll-arrow {
+  width: 16px; height: 16px;
+  border-right: 2px solid rgba(202, 240, 248, 0.5);
+  border-bottom: 2px solid rgba(202, 240, 248, 0.5);
+  transform: rotate(45deg);
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.5; }
+  50%       { transform: rotate(45deg) translate(4px, 4px); opacity: 1; }
+}
+
+@media (max-width: 700px) {
+  .fp-right, .fp-left { width: min(260px, 44vw); padding: 20px 18px; }
+  .fp-top h2 { font-size: 2.2rem; }
+  .fp-flags { gap: 14px; }
+}
