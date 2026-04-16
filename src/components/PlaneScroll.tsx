@@ -45,7 +45,7 @@ export default function PlaneScroll() {
       rotation: w.r,
     }))
 
-    gsap.set(plane, { x: kf[0].x, y: kf[0].y, rotation: kf[0].r, opacity: 0 })
+    gsap.set(plane, { x: kf[0].x, y: kf[0].y, rotation: kf[0].rotation, opacity: 0 })
 
     const st = {
       trigger: document.documentElement,
@@ -58,7 +58,7 @@ export default function PlaneScroll() {
     const tl = gsap.timeline({ scrollTrigger: st })
     tl.to(plane, { opacity: 1, duration: 0.03 })
     kf.slice(1).forEach(pos =>
-      tl.to(plane, { x: pos.x, y: pos.y, rotation: pos.r, ease: 'power1.inOut', duration: 0.1 })
+      tl.to(plane, { x: pos.x, y: pos.y, rotation: pos.rotation, ease: 'power1.inOut', duration: 0.1 })
     )
     tl.to(plane, { opacity: 0, duration: 0.02 })
 
